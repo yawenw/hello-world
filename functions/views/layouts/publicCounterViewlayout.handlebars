@@ -1,0 +1,324 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	    <!-- Required meta tags always come first -->
+
+	    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+	    <title>Counter Lookup Tool</title>
+
+	    <!-- Font Awesome -->
+	    <link rel="stylesheet" href="/fonts/font-awesome.css">
+
+        <!-- JQuery -->
+        <script type="text/javascript" src="/js/jquery-3.3.1.min.js"></script>
+
+        <!-- Tooltrack Util -->
+        <script type="text/javascript" src="/js/TooltrackUtil.js"></script>
+
+        <!-- Bootstrap core CSS -->
+	    <link href="/css/bootstrap.min.css" rel="stylesheet">
+
+	    <!-- Material Design Bootstrap -->
+	    <link href="/css/mdb.min.css" rel="stylesheet">
+
+		<!-- DevA Design  -->
+	    <link href="/css/devA.css" rel="stylesheet">
+		<!--<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.18/datatables.min.css"/>-->
+		<!--<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css" />
+		<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/select/1.3.1/css/select.dataTables.min.css" />-->
+		<!-- DataTables CSS -->
+		<link rel="stylesheet" type="text/css" href="/css/addons/datatables.min.css">
+		<!-- DataTables Select CSS -->
+		<link rel="stylesheet" type="text/css" href="/css/addons/datatables-select.min.css"> 
+
+
+		<style type="text/css">/* Chart.js */
+		@-webkit-keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}@keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}.chartjs-render-monitor{-webkit-animation:chartjs-render-animation 0.001s;animation:chartjs-render-animation 0.001s;}
+		</style>
+
+		<style>
+			hr {
+				display: block;
+				margin-top: 0.5em;
+				margin-bottom: 0.5em;
+				margin-left: auto;
+				margin-right: auto;
+				border-style: inset;
+				border-width: 0.5px;
+			}
+            .steps-form-2 {
+    display: table;
+    width: 100%;
+    position: relative; }
+.steps-form-2 .steps-row-2 {
+    display: table-row; }
+.steps-form-2 .steps-row-2:before {
+    top: 14px;
+    bottom: 0;
+    position: absolute;
+    content: " ";
+    width: 100%;
+    height: 2px;
+    background-color: #7283a7; }
+.steps-form-2 .steps-row-2 .steps-step-2 {
+    display: table-cell;
+    text-align: center;
+    position: relative; }
+.steps-form-2 .steps-row-2 .steps-step-2 p {
+    margin-top: 0.5rem; }
+.steps-form-2 .steps-row-2 .steps-step-2 button[disabled] {
+    opacity: 1 !important;
+    filter: alpha(opacity=100) !important; }
+.steps-form-2 .steps-row-2 .steps-step-2 .btn-circle-2 {
+    width: 70px;
+    height: 70px;
+    border: 2px solid #59698D;
+    background-color: white !important;
+    color: #59698D !important;
+    border-radius: 50%;
+    padding: 22px 18px 15px 18px;
+    margin-top: -22px; }
+.steps-form-2 .steps-row-2 .steps-step-2 .btn-circle-2:hover {
+    border: 2px solid #4285F4;
+    color: #4285F4 !important;
+    background-color: white !important; }
+.steps-form-2 .steps-row-2 .steps-step-2 .btn-circle-2 .fa {
+    font-size: 1.7rem; }
+		</style>
+
+	</head>
+<body class="hidden-sn blue-skin">
+    <script>
+        var userid = '';
+        var email = '';
+        var userName = '';
+        var zhttp = new XMLHttpRequest();
+                    zhttp.onreadystatechange = function() {
+                        if (this.readyState == 4 && this.status == 200) {
+                            var jsonResponse = JSON.parse(this.response);
+                            userid = jsonResponse['username'];
+                            email = jsonResponse['email'];
+                            document.getElementById("navbarDropdownMenuLink").innerHTML = jsonResponse['name']+'&nbsp|&nbsp<img src="/images/support36x36.png">';
+                            userName = jsonResponse['name'];
+                        }
+                      };
+                    zhttp.open("GET", "https://supporttools.citrite.net/api/login/user", true);
+                    zhttp.send();
+    </script>
+    <!--Double navigation-->
+    <header>
+        <!-- Sidebar navigation -->
+        <div id="slide-out" class="side-nav sn-bg-4 mdb-sidenav" style="transform: translateX(-100%);background-color: white; background-image: none">
+            <ul class="custom-scrollbar">
+                <!-- Logo -->
+                <li>
+                    <div class="logo-wrapper waves-light waves-effect waves-light hoverable">
+                        <a href="/"><img src="/images/citrixlogo.jpg" class="img-fluid flex-center"></a>
+                    </div>
+                </li>
+                <!--/. Logo -->
+                <!--Social-->
+                <!--<li>
+                    <ul class="social">
+                        <li><a href="https://mdbootstrap.com/previews/docs/latest/html/navigation/side-nav-hidden-navbar-noFixed.html#" class="icons-sm fb-ic"><i class="fa fa-facebook"> </i></a></li>
+                        <li><a href="https://mdbootstrap.com/previews/docs/latest/html/navigation/side-nav-hidden-navbar-noFixed.html#" class="icons-sm pin-ic"><i class="fa fa-pinterest"> </i></a></li>
+                        <li><a href="https://mdbootstrap.com/previews/docs/latest/html/navigation/side-nav-hidden-navbar-noFixed.html#" class="icons-sm gplus-ic"><i class="fa fa-google-plus"> </i></a></li>
+                        <li><a href="https://mdbootstrap.com/previews/docs/latest/html/navigation/side-nav-hidden-navbar-noFixed.html#" class="icons-sm tw-ic"><i class="fa fa-twitter"> </i></a></li>
+                    </ul>
+                </li>-->
+                <!--/Social-->
+                <!--Search Form-->
+                <!--<li>
+                    <form class="search-form" role="search">
+                        <div class="form-group md-form mt-0 pt-1 waves-light waves-effect waves-light">
+                            <input type="text" class="form-control" placeholder="Search">
+                        </div>
+                    </form>
+                </li>-->
+                <!--/.Search Form-->
+                <!-- Side navigation links -->
+                <!-- Color red-> 237,28,36 green ->178,210,53  light-blue-> 0,172,221 blue-> 41,128,184 -->
+                <li>
+                    <ul class="collapsible collapsible-accordion">
+                        <li id="general-options" class="active mx-auto">
+							<a style="color:rgb(41,128,184);text-shadow: 1px 1px 2.5px white;font-size: 17px;font-family: 'Helvetica';padding-right: 45px;" class="collapsible-header text-center" >- Common Tools -</a><br>
+                            <div class="" style="display: block;">
+                                <ul>
+                                    <li>
+										<a style="color:black;text-shadow: 1px 1px 0.5px white;font-size: 14px;font-family: 'Helvetica';" href="/crashanalyzer" class="waves-effect">CrashAnalyzer</a>
+                                    </li>
+                                    <!--<li>
+										<a style="color:black;text-shadow: 1px 1px 0.5px white;font-size: 14px;font-family: 'Helvetica';" href="/sbpp" class="waves-effect">Supportbundle preprocessor</a>
+                                    </li>		-->
+                                    </li>
+                                </ul>
+                            </div>
+                        </li><hr>
+                        <a style="color:rgb(41,128,184);text-shadow: 1px 1px 2.5px white;font-size: 17px;font-family: 'Helvetica';padding-right: 25px;" class="collapsible-header text-center"><strong>- Product Specific Tools -</strong></a><br>
+                        <li><a style="color:black;text-shadow: 1px 1px 2.5px white;font-size: 15px;font-family:'Helvetica';" class="collapsible-header waves-effect arrow-r">NetScaler</a>
+                            <div class="collapsible-body">
+                                <ul >
+                                    <li><a style="color:black;text-shadow: 1px 1px 0.5px white;font-size: 14px;font-family: 'Helvetica';" href="/counterview" class="waves-effect">- Counterview</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li><hr>
+                        <li><a style="color:black;text-shadow: 1px 1px 2.5px white;font-size: 15px;font-family: 'Helvetica';" class="collapsible-header waves-effect arrow-r">XenApp / XenDesktop</a>
+                            <div class="collapsible-body">
+                                <ul >
+                                    <li><a style="color:black;text-shadow: 1px 1px 0.5px white;font-size: 14px;font-family: 'Helvetica';" href="/registryhelper" class="waves-effect">- Registry Helper</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li><hr>
+                        <li><a style="color:black;text-shadow: 1px 1px 2.5px white;font-size: 15px;font-family:'Helvetica';" class="collapsible-header waves-effect arrow-r">CEM (XenMobile)</a>
+                            <div class="collapsible-body">
+                                <ul >
+                                    <li><a style="color:black;text-shadow: 1px 1px 0.5px white;font-size: 14px;font-family: 'Helvetica';" href="/cem/querybuilder" class="waves-effect">- Query Builder</a>
+                                    </li>
+                                    <li><a style="color:black;text-shadow: 1px 1px 0.5px white;font-size: 14px;font-family: 'Helvetica';" href="/cem/loggerstack" class="waves-effect">- Logger Stack</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <!--<hr>
+                        <li><a style="color:rgb(41,128,184);text-shadow: 1px 1px 2.5px white;font-size: 17px;font-family: 'Helvetica';" class="collapsible-header waves-effect arrow-r">XenMobile</a>
+                            <div class="collapsible-body">
+                                <ul >
+                                    <li><a style="color:black;text-shadow: 1px 1px 0.5px white;font-size: 14px;font-family: 'Helvetica';" href="/xmreports" class="waves-effect">XenMobile Reports</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>-->
+                        <!--<hr>
+						<li><a style="color:rgb(41,128,184);text-shadow: 1px 1px 2.5px white;font-size: 17px;font-family: 'Helvetica';" class="collapsible-header waves-effect arrow-r">Dev-A Only</a>
+                            <div class="collapsible-body">
+                                <ul>
+                                    <li>
+										<a style="color:black;text-shadow: 1px 1px 0.5px white;font-size: 14px;font-family: 'Helvetica';" href="/tooltrack" class="waves-effect">ToolTrack</a>
+                                    </li>
+									<li>
+										<a style="color:black;text-shadow: 1px 1px 0.5px white;font-size: 14px;font-family: 'Helvetica';" href="/entomology" class="waves-effect">Entomology</a>
+                                    </li>
+									<li>
+										<a style="color:black;text-shadow: 1px 1px 0.5px white;font-size: 14px;font-family: 'Helvetica';" href="/signatures" class="waves-effect">Signatures</a>
+                                    </li>
+									<li>
+										<a style="color:black;text-shadow: 1px 1px 0.5px white;font-size: 14px;font-family: 'Helvetica';" href="http://ftlvdevaxmsym1.citrite.net\apps\EasyForce_ForDevA\setup.exe" class="waves-effect">EasyForce (DevA)</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>--><hr>
+                        <a style="color:rgb(41,128,184);text-shadow: 1px 1px 2.5px white;font-size: 17px;font-family: 'Helvetica';padding-right: 25px;" class="collapsible-header text-center"><strong>- Downloads -</strong></a><br>
+                        <ul >
+                                    <li>
+                                        <a style="color:black;text-shadow: 1px 1px 0.5px white;font-size: 14px;font-family: 'Helvetica';" href="https://ftlvdevaxmsym1.citrite.net/apps/LogAnalyzer_1.1.9.9.exe" class="waves-effect">Log Analyzer</a>
+                                    </li><hr>
+                                    <li>
+                                        <a style="color:black;text-shadow: 1px 1px 0.5px white;font-size: 14px;font-family: 'Helvetica';" href="https://ftlvdevaxmsym1.citrite.net/apps/EasyForce/setup.exe" class="waves-effect">Easy Force</a>
+                                    </li><hr>
+                                </ul>
+                    </ul>
+                </li>
+                <!--/. Side navigation links -->
+            </ul>
+            <div class="sidenav-bg mask-strong"></div>
+        </div>
+        <!--/. Sidebar navigation -->
+        <!-- Navbar -->
+        <nav class="navbar navbar-default navbar-toggleable-md navbar-expand-lg scrolling-navbar double-nav" style="margin-left: -30px">
+            <!-- SideNav slide-out button -->
+            
+            <!-- Breadcrumb-->
+            <div class="breadcrumb-dn mr-auto">
+                <a href="/"><h2 class="" style="text-shadow: 1px 1px 2px rgb(255,255,255);padding-left:1em;font-family: 'Helvetica';color: rgb(41,128,184)">Counter Lookup Tool&nbsp&nbsp|&nbsp&nbsp<img src="/images/citrixlogo.jpg" style="height: auto;max-width: 25%;" class="img-fluid"></h2></a>
+            </div>
+            <ul class="nav navbar-nav nav-flex-icons ml-auto">
+                <!--<li class="nav-item">
+                    <a class="nav-link waves-effect waves-light"><i class="fa fa-envelope"></i> <span class="clearfix d-none d-sm-inline-block">Contact</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link waves-effect waves-light"><i class="fa fa-comments-o"></i> <span class="clearfix d-none d-sm-inline-block">Support</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link waves-effect waves-light"><i class="fa fa-user"></i> <span class="clearfix d-none d-sm-inline-block">Account</span></a>
+                </li>-->
+                <li class="nav-item">
+                    <a style="font-size: 25px;text-shadow: 1px 1px 2px rgb(255,255,255);padding-left:1em;font-family: 'Helvetica';color: rgb(41,128,184)" class="nav-link waves-effect waves-light" <a href="https://www.citrix.com/en-in/contact/technical-support.html">
+                        <img src="/images/support36x36.png">
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <!-- /.Navbar -->
+    </header>
+    <!--/.Double navigation-->
+
+
+    {{#if success_msg}}
+        <div class="alert alert-success">{{success_msg}}</div>
+  	{{/if}}
+
+  	{{#if error_msg}}
+        <div class="alert alert-danger">{{error_msg}}</div>
+  	{{/if}}
+
+  	{{#if error}}
+        <div class="alert alert-danger">{{error}}</div>
+	{{/if}}
+
+
+    <!--Main Layout-->
+    {{{body}}}
+
+    <!-- SCRIPTS -->
+
+
+
+    <!-- Tooltips -->
+    <script type="text/javascript" src="/js/popper.min.js"></script>
+
+    <!--<script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.18/datatables.min.js"></script>-->
+    <!--<script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/select/1.3.1/js/dataTables.select.min.js"></script>-->
+    <!-- DataTables JS -->
+    <script type="text/javascript" src="/js/addons/datatables.min.js"></script>
+    <!-- DataTables Select JS -->
+    <script type="text/javascript" src="/js/addons/datatables-select.min.js"></script>
+
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="/js/mdb.min.js"></script>
+    <script>
+
+        // SideNav Initialization
+        $(".button-collapse").sideNav();
+		document.getElementById("general-options").click();
+
+        function sendEmail(){
+          try{
+            var theApp = new ActiveXObject("Outlook.Application");
+            var objNS = theApp.GetNameSpace('MAPI');
+            var theMailItem = theApp.CreateItem(0); // value 0 = MailItem
+            theMailItem.to = ('test@gmail.com');
+            theMailItem.Subject = ('test');
+            theMailItem.Body = ('test');
+            //theMailItem.Attachments.Add("C\\file.txt");
+            theMailItem.display();
+           }
+            catch (err) {
+               alert(err.message);
+            }
+        }
+    </script>
+    <div class="drag-target" style="left: 0px; touch-action: pan-y; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+    </div>
+
+</body>
+</html>
