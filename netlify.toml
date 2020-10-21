@@ -3,4 +3,4 @@
 [[redirects]]
 from = "/adc-counters/*"
 to = "https://quirky-knuth-0ff14b.netlify.app/:splat"
-status = 302
+status = 200
