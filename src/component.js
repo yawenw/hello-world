@@ -1,7 +1,7 @@
 const faunadb = require('faunadb');
 const q = faunadb.query
 var fs = require('fs')
-var key = 'fnADsx934OACEr9n60IvBmNEzLAjNrFWhTjU2PZb';
+var key = 'fnAD4RRZspACAbq3noGGP2Pz0eZwiSDkjo71dxb0';
 var client = new faunadb.Client({ secret: key });
 
 
