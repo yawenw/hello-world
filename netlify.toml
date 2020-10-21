@@ -1,6 +1,6 @@
 [build]
     functions = "./functions"
-[redirects]
+[[redirects]]
 from = "/adc-counters/*"
 to = "https://quirky-knuth-0ff14b.netlify.app/:splat"
 status = 200
